@@ -1,0 +1,149 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    display:flex;
+    background:#f5f7fb;
+}
+
+.sidebar{
+    width:260px;
+    min-height:100vh;
+    background:#2563eb;
+    color:white;
+    padding:30px;
+}
+
+.sidebar h2{
+    margin-bottom:40px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    padding:15px 0;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.sidebar li:hover{
+    padding-left:10px;
+}
+
+.main{
+    flex:1;
+    padding:40px;
+}
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.topbar input{
+    width:350px;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:15px;
+}
+
+.profile{
+    background:#2563eb;
+    color:white;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.subtitle{
+    color:#666;
+    margin-top:8px;
+    margin-bottom:30px;
+}
+
+.dashboard-cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px;
+}
+
+.card{
+    width:250px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h2{
+    font-size:21px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#2563eb;
+    font-size:30px;
+}
+
+.section-title{
+    margin-top:50px;
+    margin-bottom:20px;
+}
+
+.quick-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.quick-actions button{
+    padding:14px 25px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.quick-actions button:hover{
+    transform:scale(1.05);
+    background:#1d4ed8;
+}
+
+.schedule-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+
+.schedule-card p{
+    margin:18px 0;
+    font-size:17px;
+} 
+
+.sidebar a{
+    color:white;
+    text-decoration:none;
+    display:block;
+}
+
+.sidebar a:hover{
+    color:#dbeafe;
+}
