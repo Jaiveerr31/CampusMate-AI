@@ -63,3 +63,77 @@ background:#eef4ff;
 .top-nav a:hover{
     text-decoration:underline;
 }
+
+.subtitle{
+margin:10px 0 25px;
+color:#666;
+}
+
+.timetable-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:22px;
+margin-top:30px;
+}
+
+.class-card{
+background:#fff;
+padding:24px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+border-top:6px solid #2563eb;
+}
+
+.class-card:hover{
+transform:translateY(-8px);
+}
+
+.today{
+border-top:6px solid #22c55e;
+}
+
+.class-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
+
+.class-header h2{
+color:#2563eb;
+}
+
+.badge{
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+color:white;
+}
+
+.live{
+background:#22c55e;
+}
+
+.normal{
+background:#2563eb;
+}
+
+.holiday{
+background:#f59e0b;
+}
+
+.subject{
+font-weight:600;
+margin-top:15px;
+}
+
+.time{
+color:#666;
+margin-bottom:10px;
+font-size:14px;
+padding-bottom:12px;
+border-bottom:1px solid #eee;
+}
+

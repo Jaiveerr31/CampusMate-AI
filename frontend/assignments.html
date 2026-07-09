@@ -16,33 +16,228 @@
 
 </head>
 
+<script src="js/assignments.js"></script>
+
+<script src="js/attendance.js"></script>
+
 <body>
+
+<nav class="top-nav">
+
+    <a href="dashboard.html">🏠 Dashboard</a>
+
+    <a href="notes.html">📚 Notes</a>
+
+    <a href="attendance.html">📈 Attendance</a>
+
+    <a href="timetable.html">📅 Timetable</a>
+
+    <a href="assignments.html">📝 Assignments</a>
+
+</nav>
 
 <div class="container">
 
-<h1>📝 Assignments</h1>
+<h1>📝 Assignment Manager</h1>
 
-<div class="assignment">
+<p class="subtitle">
+Stay ahead of your deadlines and complete every assignment on time.
+</p>
 
-<h2>Java Mini Project</h2>
+<div class="assignment-summary">
 
-<p>Due: 20 July 2026</p>
+<div class="summary-card">
 
-</div>
+<h2 id="pendingCount">4</h2>
 
-<div class="assignment">
-
-<h2>DBMS Case Study</h2>
-
-<p>Due: 23 July 2026</p>
+<p>Pending</p>
 
 </div>
 
-<div class="assignment">
+<div class="summary-card">
 
-<h2>AI Research Report</h2>
+<h2 id="completedCount">8</h2>
 
-<p>Due: 28 July 2026</p>
+<p>Completed</p>
+
+</div>
+
+<div class="summary-card">
+
+<h2 id="highPriorityCount">2</h2>
+
+<p>High Priority</p>
+
+</div>
+
+</div>
+
+<div class="search-area">
+
+<input
+type="text"
+id="searchAssignment"
+placeholder="Search assignment...">
+
+</div>
+
+<div class="assignment-grid">
+
+<div class="assignment-card high">
+
+<div class="top-row">
+
+<h2>Database Management System</h2>
+
+<span class="priority high-tag">
+
+HIGH
+
+</span>
+
+</div>
+
+<p>
+
+Design and normalize the given database schema.
+
+</p>
+
+<div class="bottom-row">
+
+<span>
+
+📅 Due :
+25 July
+
+</span>
+
+<button>
+
+Complete
+
+</button>
+
+</div>
+
+</div>
+
+<div class="assignment-card medium">
+
+<div class="top-row">
+
+<h2>Java OOP</h2>
+
+<span class="priority medium-tag">
+
+MEDIUM
+
+</span>
+
+</div>
+
+<p>
+
+Implement Student Management System.
+
+</p>
+
+<div class="bottom-row">
+
+<span>
+
+📅 Due :
+28 July
+
+</span>
+
+<button>
+
+Complete
+
+</button>
+
+</div>
+
+</div>
+
+<div class="assignment-card low">
+
+<div class="top-row">
+
+<h2>Computer Networks</h2>
+
+<span class="priority low-tag">
+
+LOW
+
+</span>
+
+</div>
+
+<p>
+
+Prepare notes for Unit 3.
+
+</p>
+
+<div class="bottom-row">
+
+<span>
+
+📅 Due :
+31 July
+
+</span>
+
+<button>
+
+Complete
+
+</button>
+
+</div>
+
+</div>
+
+<div class="assignment-card high">
+
+<div class="top-row">
+
+<h2>Artificial Intelligence</h2>
+
+<span class="priority high-tag">
+
+HIGH
+
+</span>
+
+</div>
+
+<p>
+
+Write Mini Project Report.
+
+</p>
+
+<div class="bottom-row">
+
+<span>
+
+📅 Due :
+21 July
+
+</span>
+
+<button>
+
+Complete
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 

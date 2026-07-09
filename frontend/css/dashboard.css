@@ -138,12 +138,261 @@ body{
     font-size:17px;
 } 
 
+.sidebar{
+    width:270px;
+    min-height:100vh;
+    background:#1e293b;
+    color:white;
+    padding:30px 20px;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    margin:8px 0;
+}
+
 .sidebar a{
+    display:flex;
+    align-items:center;
+    gap:15px;
     color:white;
     text-decoration:none;
-    display:block;
+    padding:14px 16px;
+    border-radius:10px;
+    transition:.3s;
 }
 
 .sidebar a:hover{
-    color:#dbeafe;
+    background:#334155;
+}
+
+.sidebar i{
+    width:20px;
+    text-align:center;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:white;
+    padding:12px 18px;
+    border-radius:12px;
+    width:420px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    width:100%;
+    font-size:15px;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.icon-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.icon-btn:hover{
+    transform:translateY(-3px);
+}
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.avatar{
+    width:50px;
+    height:50px;
+    background:#2563eb;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+}
+
+.dashboard-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+margin-top:30px;
+margin-bottom:35px;
+}
+
+.card{
+background:#fff;
+border-radius:18px;
+padding:25px;
+display:flex;
+align-items:center;
+gap:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card::before{
+content:"";
+position:absolute;
+left:0;
+top:0;
+width:6px;
+height:100%;
+}
+
+.attendance-card::before{
+background:#22c55e;
+}
+
+.assignment-card::before{
+background:#f97316;
+}
+
+.cgpa-card::before{
+background:#2563eb;
+}
+
+.notes-card::before{
+background:#9333ea;
+}
+
+.classes-card::before{
+background:#06b6d4;
+}
+
+.streak-card::before{
+background:#ef4444;
+}
+
+.card-icon{
+width:65px;
+height:65px;
+border-radius:15px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:28px;
+color:#fff;
+}
+
+.attendance-card .card-icon{
+background:#22c55e;
+}
+
+.assignment-card .card-icon{
+background:#f97316;
+}
+
+.cgpa-card .card-icon{
+background:#2563eb;
+}
+
+.notes-card .card-icon{
+background:#9333ea;
+}
+
+.classes-card .card-icon{
+background:#06b6d4;
+}
+
+.streak-card .card-icon{
+background:#ef4444;
+}
+
+.card-info{
+flex:1;
+}
+
+.card-info h4{
+font-size:15px;
+color:#666;
+font-weight:500;
+margin-bottom:8px;
+}
+
+.card-info h2{
+font-size:32px;
+margin-bottom:10px;
+color:#111827;
+}
+
+.card-info small{
+color:#777;
+font-size:13px;
+}
+
+.progress{
+width:100%;
+height:10px;
+background:#e5e7eb;
+border-radius:20px;
+margin-bottom:10px;
+overflow:hidden;
+}
+
+.progress-fill{
+height:100%;
+background:#22c55e;
+border-radius:20px;
+transition:1s;
+}
+
+.quick-actions button{
+
+transition:.3s;
+cursor:pointer;
+
+}
+
+.quick-actions button:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 12px 25px rgba(37,99,235,.25);
+
+}
+
+.schedule-card{
+
+transition:.3s;
+
+}
+
+.schedule-card:hover{
+
+transform:scale(1.02);
+
+box-shadow:0 12px 25px rgba(0,0,0,.12);
+
 }

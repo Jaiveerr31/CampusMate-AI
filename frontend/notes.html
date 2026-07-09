@@ -13,35 +13,170 @@
     <link rel="stylesheet" href="css/notes.css">
 </head>
 
+<script src="js/notes.js"></script>
+
+
+
 <body>
+
+<nav class="top-nav">
+
+    <a href="dashboard.html">🏠 Dashboard</a>
+
+    <a href="notes.html">📚 Notes</a>
+
+    <a href="attendance.html">📈 Attendance</a>
+
+    <a href="timetable.html">📅 Timetable</a>
+
+    <a href="assignments.html">📝 Assignments</a>
+
+</nav>
 
 <div class="container">
 
-    <h1>📚 My Notes</h1>
+<h1>📚 Smart Notes</h1>
 
-    <div class="toolbar">
-        <button>+ New Note</button>
-        <input type="text" placeholder="Search notes...">
-    </div>
+<p class="subtitle">
+Organize, search and manage all your study notes.
+</p>
 
-    <div class="notes-grid">
+<div class="notes-top">
 
-        <div class="note-card">
-            <h2>Java OOP</h2>
-            <p>Classes, Objects, Inheritance and Polymorphism.</p>
-        </div>
+<div class="note-stat">
 
-        <div class="note-card">
-            <h2>DBMS</h2>
-            <p>Normalization, SQL Queries and Joins.</p>
-        </div>
+<h2 id="totalNotes">25</h2>
 
-        <div class="note-card">
-            <h2>AI</h2>
-            <p>Machine Learning, Neural Networks and NLP.</p>
-        </div>
+<p>Total Notes</p>
 
-    </div>
+</div>
+
+<div class="note-stat">
+
+<h2 id="favoriteNotes">8</h2>
+
+<p>Favorites</p>
+
+</div>
+
+<div class="note-stat">
+
+<h2 id="recentNotes">6</h2>
+
+<p>Recently Added</p>
+
+</div>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchNotes"
+placeholder="Search Notes...">
+
+</div>
+
+<div class="notes-grid">
+
+<div class="note-card">
+
+<h2>Java Programming</h2>
+
+<p>
+
+OOP Concepts, Collections,
+Exception Handling
+
+</p>
+
+<button>Open Notes</button>
+
+</div>
+
+<div class="note-card">
+
+<h2>Database Management</h2>
+
+<p>
+
+Normalization,
+Transactions,
+SQL Queries
+
+</p>
+
+<button>Open Notes</button>
+
+</div>
+
+<div class="note-card">
+
+<h2>Artificial Intelligence</h2>
+
+<p>
+
+Machine Learning,
+Neural Networks,
+Deep Learning
+
+</p>
+
+<button>Open Notes</button>
+
+</div>
+
+<div class="note-card">
+
+<h2>Computer Networks</h2>
+
+<p>
+
+OSI Model,
+TCP/IP,
+Routing
+
+</p>
+
+<button>Open Notes</button>
+
+</div>
+
+<div class="note-card">
+
+<h2>Operating System</h2>
+
+<p>
+
+Scheduling,
+Deadlocks,
+Memory Management
+
+</p>
+
+<button>Open Notes</button>
+
+</div>
+
+<div class="note-card">
+
+<h2>Python</h2>
+
+<p>
+
+Functions,
+Libraries,
+NumPy,
+Pandas
+
+</p>
+
+<button>Open Notes</button>
+
+</div>
+
+</div>
 
 </div>
 

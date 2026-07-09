@@ -15,6 +15,8 @@
 
 </head>
 
+<script src="js/settings.js"></script>
+
 <body>
 
 <nav class="top-nav">
@@ -31,39 +33,119 @@
 
 <h1>⚙️ Settings</h1>
 
-<div class="setting">
+<p class="subtitle">
+Customize your CampusMate AI experience.
+</p>
 
-<label>👤 Full Name</label>
+<div class="settings-grid">
 
-<input type="text" placeholder="Jaiveer Sharma">
+<div class="setting-card">
 
-</div>
+<h2>🌙 Dark Mode</h2>
 
-<div class="setting">
+<p>Switch between light and dark themes.</p>
 
-<label>📧 Email</label>
+<label class="switch">
 
-<input type="email" placeholder="example@email.com">
+<input type="checkbox" id="darkMode">
 
-</div>
+<span class="slider"></span>
 
-<div class="setting">
-
-<label>🌙 Dark Mode</label>
-
-<input type="checkbox">
+</label>
 
 </div>
 
-<div class="setting">
+<div class="setting-card">
 
-<label>🔔 Notifications</label>
+<h2>🔔 Notifications</h2>
 
-<input type="checkbox" checked>
+<p>Receive reminders for assignments.</p>
+
+<label class="switch">
+
+<input type="checkbox" id="notifications" checked>
+
+<span class="slider"></span>
+
+</label>
 
 </div>
 
-<button>Save Changes</button>
+<div class="setting-card">
+
+<h2>📧 Email Alerts</h2>
+
+<p>Weekly academic progress reports.</p>
+
+<label class="switch">
+
+<input type="checkbox" id="emailAlerts">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="setting-card">
+
+<h2>💾 Auto Save</h2>
+
+<p>Automatically save your notes.</p>
+
+<label class="switch">
+
+<input type="checkbox" id="autosave" checked>
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+<div class="setting-card">
+
+<h2>🌍 Language</h2>
+
+<select id="language">
+
+<option>English</option>
+
+<option>Hindi</option>
+
+<option>French</option>
+
+<option>German</option>
+
+</select>
+
+</div>
+
+<div class="setting-card">
+
+<h2>🎨 Accent Color</h2>
+
+<select id="themeColor">
+
+<option>Blue</option>
+
+<option>Green</option>
+
+<option>Purple</option>
+
+<option>Orange</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button id="saveSettings">
+
+Save Settings
+
+</button>
 
 </div>
 

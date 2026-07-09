@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CGPA Calculator | CampusMate AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/cgpa.css">
+
+</head>
+
+<script src="js/cgpa.js"></script>
+
+<body>
+
+<nav class="top-nav">
+
+<a href="dashboard.html">🏠 Dashboard</a>
+<a href="notes.html">📚 Notes</a>
+<a href="attendance.html">📈 Attendance</a>
+<a href="timetable.html">📅 Timetable</a>
+<a href="assignments.html">📝 Assignments</a>
+
+</nav>
+
+<div class="container">
+
+<h1>🎓 Smart CGPA Calculator</h1>
+
+<p class="subtitle">
+Calculate your CGPA instantly and track your academic performance.
+</p>
+
+<div class="cgpa-summary">
+
+<div class="summary-card">
+
+<h2 id="currentCgpa">7.22</h2>
+
+<p>Current CGPA</p>
+
+</div>
+
+<div class="summary-card">
+
+<h2 id="targetCgpa">8.00</h2>
+
+<p>Target CGPA</p>
+
+</div>
+
+<div class="summary-card">
+
+<h2 id="semesterCount">4</h2>
+
+<p>Semesters</p>
+
+</div>
+
+</div>
+
+<div class="semester-grid">
+
+<div class="semester-card">
+
+<h2>Semester 1</h2>
+
+<input type="number" id="sem1" placeholder="Enter SGPA" value="7.12">
+
+</div>
+
+<div class="semester-card">
+
+<h2>Semester 2</h2>
+
+<input type="number" id="sem2" placeholder="Enter SGPA" value="7.58">
+
+</div>
+
+<div class="semester-card">
+
+<h2>Semester 3</h2>
+
+<input type="number" id="sem3" placeholder="Enter SGPA" value="6.96">
+
+</div>
+
+<div class="semester-card">
+
+<h2>Semester 4</h2>
+
+<input type="number" id="sem4" placeholder="Enter SGPA" value="7.24">
+
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button id="calculateBtn">
+
+Calculate CGPA
+
+</button>
+
+<button id="resetBtn">
+
+Reset
+
+</button>
+
+</div>
+
+<h2 class="result">
+
+Current CGPA :
+<span id="cgpaResult">
+
+7.22
+
+</span>
+
+</h2>
+
+</div>
+
+<script src="js/cgpa.js"></script>
+
+</body>
+</html>

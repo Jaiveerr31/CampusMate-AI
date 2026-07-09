@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusMate AI Assistant</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/ai.css">
+
+</head>
+
+<body>
+
+<nav class="top-nav">
+
+    <div class="logo">
+        🤖 CampusMate AI
+    </div>
+
+    <div class="menu">
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="notes.html">Notes</a>
+
+        <a href="attendance.html">Attendance</a>
+
+        <a href="assignments.html">Assignments</a>
+
+        <a href="timetable.html">Timetable</a>
+
+    </div>
+
+</nav>
+
+<div class="page">
+
+<div class="left-panel">
+
+<div class="profile-card">
+
+<div class="avatar">
+👨‍🎓
+</div>
+
+<h2>Student AI</h2>
+
+<p>Your Personal Study Assistant</p>
+
+</div>
+
+<div class="feature-card">
+
+<h3>Today's Summary</h3>
+
+<div class="stat">
+
+<span>📚 Notes</span>
+
+<strong id="notesCount">12</strong>
+
+</div>
+
+<div class="stat">
+
+<span>📝 Assignments</span>
+
+<strong id="assignmentCount">5</strong>
+
+</div>
+
+<div class="stat">
+
+<span>📅 Classes</span>
+
+<strong id="classCount">4</strong>
+
+</div>
+
+<div class="stat">
+
+<span>📈 Attendance</span>
+
+<strong id="attendancePercent">92%</strong>
+
+</div>
+
+</div>
+
+<div class="feature-card">
+
+<h3>Quick Prompts</h3>
+
+<button class="prompt-btn">Summarize today's notes</button>
+
+<button class="prompt-btn">Generate quiz</button>
+
+<button class="prompt-btn">Explain Java OOP</button>
+
+<button class="prompt-btn">Create study plan</button>
+
+<button class="prompt-btn">Revise DBMS</button>
+
+<button class="prompt-btn">Prepare for viva</button>
+
+</div>
+
+</div>
+
+<div class="chat-container">
+
+<div class="chat-header">
+
+<div>
+
+<h2>CampusMate AI Chat</h2>
+
+<p>Ask anything related to academics.</p>
+
+</div>
+
+<div class="online">
+
+🟢 Online
+
+</div>
+
+</div>
+
+<div class="chat-box" id="chatBox">
+
+<div class="message ai">
+
+<div class="icon">
+
+🤖
+
+</div>
+
+<div class="text">
+
+Hello 👋
+
+I'm CampusMate AI.
+
+I can help with notes, coding, assignments, interview preparation, quizzes, study plans and much more.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="input-area">
+
+<input
+
+type="text"
+
+id="userInput"
+
+placeholder="Ask CampusMate AI anything...">
+
+<button id="sendBtn">
+
+Send
+
+</button>
+
+</div>
+
+</div>
+
+<div class="right-panel">
+
+<div class="widget">
+
+<h3>Upcoming Class</h3>
+
+<h2>Artificial Intelligence</h2>
+
+<p>10:00 AM</p>
+
+<p>Room A-302</p>
+
+</div>
+
+<div class="widget">
+
+<h3>Pending Assignment</h3>
+
+<h2>DBMS Project</h2>
+
+<p>Due in 2 Days</p>
+
+</div>
+
+<div class="widget">
+
+<h3>Motivation</h3>
+
+<p>
+
+Consistency beats intensity.
+
+Study a little every day.
+
+</p>
+
+</div>
+
+<div class="widget">
+
+<h3>Today's Goal</h3>
+
+<ul>
+
+<li>✔ Finish Java</li>
+
+<li>✔ Revise CN</li>
+
+<li>⬜ Practice DSA</li>
+
+<li>⬜ Complete Assignment</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/ai.js"></script>
+
+</body>
+</html>
