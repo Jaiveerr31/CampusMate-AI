@@ -1,262 +1,521 @@
-const chatBox = document.getElementById("chatBox");
-const input = document.getElementById("userInput");
-const sendBtn = document.getElementById("sendBtn");
 
-const replies = {
+document.addEventListener("DOMContentLoaded", function () {
 
-hello:"Hello 👋 How can I help you today?",
+    const chatBox = document.getElementById("chatBox");
+    const input = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
 
-hi:"Hi! Ready to study? 📚",
+    const STORAGE_KEY = "campusmate_chat_v2";
 
-java:"Java is an object-oriented programming language used for building cross-platform applications.",
+    const responses = {
 
-python:"Python is a simple and powerful programming language widely used in AI, ML and Web Development.",
+        "generate quiz": `📚 Java OOP Practice Quiz
 
-dbms:"DBMS is software used to store, retrieve and manage data efficiently.",
+1. What does OOP stand for?
+A) Object-Oriented Programming
+B) Online Operating Process
+C) Open Object Protocol
 
-cn:"Computer Networks deals with communication between computers using networking protocols.",
+Answer: A
 
-os:"Operating System manages hardware resources and software processes.",
+2. Which keyword is used for inheritance in Java?
+A) implement
+B) extends
+C) inherit
 
-ai:"Artificial Intelligence enables machines to simulate human intelligence.",
+Answer: B
 
-ml:"Machine Learning is a subset of AI where computers learn from data.",
+3. Which concept hides internal implementation details?
+A) Encapsulation
+B) Compilation
+C) Recursion
 
-attendance:"Maintain above 75% attendance to stay eligible for exams.",
+Answer: A
 
-assignment:"Finish assignments before the deadline to avoid penalties.",
+4. Which method is the entry point of a standard Java application?
+A) start()
+B) run()
+C) main()
 
-notes:"Organize your notes subject-wise for quick revision.",
+Answer: C
 
-project:"Break your project into small milestones and complete one at a time.",
+5. Which keyword creates an object in Java?
+A) new
+B) class
+C) object
 
-interview:"Practice DSA, OOP, DBMS, OS and CN for placements.",
+Answer: A
 
-resume:"Keep your resume one page long with projects and skills.",
+✅ Quiz Complete! Review any answers you missed.`,
 
-cgpa:"Study consistently every week to improve your CGPA.",
+        "create study plan": `📅 Your 7-Day CSE Study Plan
 
-thankyou:"You're welcome 😄",
+Day 1 — Data Structures
+Revise arrays, linked lists and stacks.
 
-thanks:"Happy to help ❤️"
+Day 2 — Java Programming
+Practice OOP concepts and exception handling.
 
-};
+Day 3 — DBMS
+Study normalization, SQL joins and keys.
 
-function appendMessage(type,text){
+Day 4 — Computer Networks
+Revise OSI layers, TCP/IP and routing.
 
-const message=document.createElement("div");
+Day 5 — Operating Systems
+Study processes, scheduling and deadlocks.
 
-message.className="message "+type;
+Day 6 — Artificial Intelligence
+Revise search algorithms and machine learning basics.
 
-const icon=document.createElement("div");
+Day 7 — Revision
+Solve practice questions and review weak topics.
 
-icon.className="icon";
+💡 Adjust the schedule to match your upcoming exams and deadlines.`,
 
-icon.innerHTML=type==="user"?"🧑":"🤖";
+        "prepare for viva": `🎤 CSE Viva Preparation — 10 Questions
 
-const bubble=document.createElement("div");
+1. What is OOP?
+Programming based on classes and objects.
 
-bubble.className="text";
+2. What is inheritance?
+A mechanism where one class acquires features of another.
 
-bubble.innerHTML=text;
+3. What is DBMS?
+Software that stores, manages and retrieves data.
 
-message.appendChild(icon);
+4. What is a primary key?
+An attribute that uniquely identifies a table record.
 
-message.appendChild(bubble);
+5. What is normalization?
+Organizing database tables to reduce redundancy.
 
-chatBox.appendChild(message);
+6. What is an operating system?
+Software that manages hardware and applications.
 
-chatBox.scrollTop=chatBox.scrollHeight;
+7. What is a process?
+A program currently in execution.
 
+8. What is an IP address?
+A logical address identifying a device on a network.
+
+9. What is machine learning?
+A field where systems learn patterns from data.
+
+10. What is an algorithm?
+A finite sequence of steps to solve a problem.
+
+✅ Practice answering each question aloud.`,
+
+        "explain java oop": `☕ Java Object-Oriented Programming
+
+Java uses classes and objects to organize programs.
+
+The four main OOP principles are:
+
+1. Encapsulation
+Combining data and methods inside a class and controlling access to them.
+
+2. Inheritance
+Allowing one class to reuse or extend another class's functionality.
+
+3. Polymorphism
+Allowing the same method interface to behave differently depending on the object.
+
+4. Abstraction
+Showing essential functionality while hiding unnecessary implementation details.
+
+Example:
+
+class Student {
+    String name;
+
+    void display() {
+        System.out.println(name);
+    }
 }
 
-function aiReply(question){
+Student s = new Student();
+s.name = "Alex";
+s.display();
 
-question=question.toLowerCase();
+Here, Student is a class and s is an object.
 
-for(let key in replies){
+⭐ Important for interviews: Classes, objects, constructors, inheritance and polymorphism.`,
 
-if(question.includes(key)){
+        "revise dbms": `🗄️ DBMS Quick Revision
 
-return replies[key];
+1. DBMS
+Software used to manage databases.
 
-}
+2. Primary Key
+Uniquely identifies each row.
 
-}
+3. Foreign Key
+References a key in another or the same table.
 
-return "I'm still learning 🚀 This feature will soon connect to an AI model.";
+4. Normalization
+Reduces redundancy and helps maintain data integrity.
 
-}
+5. SQL
+Language used to work with relational databases.
 
-function sendMessage(){
+6. JOIN
+Combines related rows from multiple tables.
 
-const text=input.value.trim();
+7. ACID Properties
+Atomicity, Consistency, Isolation and Durability.
 
-if(text==="") return;
+8. Indexing
+Helps speed up data retrieval.
 
-appendMessage("user",text);
+9. Transaction
+A logical unit of database operations.
 
-input.value="";
+10. ER Diagram
+Represents entities, attributes and relationships.
 
-setTimeout(function(){
+⭐ Focus on normalization, SQL queries, joins and transactions for exams.`,
 
-appendMessage("ai",aiReply(text));
+        "summarize today's notes": `📚 Notes Revision Assistant
 
-},600);
+I can help you organize a summary, but this demo cannot automatically read your saved notes yet.
 
-}
+For each topic, prepare:
 
-sendBtn.addEventListener("click",sendMessage);
+1. Definition — explain the concept in one sentence.
+2. Key Points — write three to five important facts.
+3. Example — include one practical example.
+4. Exam Focus — identify important formulas or diagrams.
+5. Revision Question — test yourself.
 
-input.addEventListener("keypress",function(e){
+💡 Open your Notes section and choose the subject you want to revise.`,
 
-if(e.key==="Enter"){
+        "java": `☕ Java Programming
 
-sendMessage();
+Java is a class-based, object-oriented programming language.
 
-}
+Important concepts:
+• Classes and objects
+• Inheritance and polymorphism
+• Encapsulation and abstraction
+• Exception handling
+• Collections
+• Interfaces
 
+Practice by building a Student Management System using classes, ArrayLists and methods.`,
+
+        "python": `🐍 Python Programming
+
+Python is a high-level programming language commonly used in automation, AI, data analysis and web development.
+
+Important concepts:
+• Variables and data types
+• Lists, tuples and dictionaries
+• Functions
+• Loops and conditions
+• Classes and objects
+• File handling
+
+Practice by creating a simple student record manager.`,
+
+        "dbms": `🗄️ Database Management Systems
+
+DBMS helps store, retrieve, update and manage structured information.
+
+Key concepts:
+• Relational databases
+• Primary and foreign keys
+• SQL queries
+• Normalization
+• Transactions
+• Indexing
+
+Example SQL:
+
+SELECT name FROM students WHERE marks > 80;`,
+
+        "computer networks": `🌐 Computer Networks
+
+Computer networks allow devices to exchange data.
+
+Important topics:
+• OSI model — 7 layers
+• TCP/IP model
+• IP addressing
+• Ethernet
+• Routing and switching
+• DNS, HTTP and DHCP
+
+⭐ For viva preparation, understand the purpose of every OSI layer.`,
+
+        "cn": `🌐 Computer Networks
+
+Focus on the OSI model, TCP/IP, Ethernet, ARP, IP addressing, routing and switching.
+
+A router connects different networks, while a typical Layer 2 switch forwards Ethernet frames within a LAN.`,
+
+        "operating system": `💻 Operating Systems
+
+An operating system manages hardware resources and provides services to applications.
+
+Important topics:
+• Process management
+• CPU scheduling
+• Memory management
+• Deadlocks
+• File systems
+• Virtual memory
+
+Example: Windows, Linux and macOS.`,
+
+        "os": `💻 Operating Systems
+
+Revise processes, threads, scheduling algorithms, deadlocks, paging and virtual memory.
+
+A process is a program in execution, while a thread is a unit of execution within a process.`,
+
+        "machine learning": `🧠 Machine Learning
+
+Machine learning enables computers to learn patterns from data.
+
+Three major types:
+1. Supervised Learning — learns from labeled examples.
+2. Unsupervised Learning — discovers patterns in unlabeled data.
+3. Reinforcement Learning — learns through rewards and feedback.
+
+Examples include spam detection and recommendation systems.`,
+
+        "artificial intelligence": `🤖 Artificial Intelligence
+
+AI develops systems capable of performing tasks associated with human intelligence.
+
+Important topics:
+• Intelligent agents
+• Search algorithms
+• Knowledge representation
+• Machine learning
+• Natural language processing
+• Neural networks
+
+AI is the broader field, while machine learning is one approach within AI.`,
+
+        "attendance": `📈 Attendance Management
+
+Use the Attendance Tracker to record classes attended and missed.
+
+Attendance percentage:
+
+(Classes Attended ÷ Total Classes) × 100
+
+Example:
+40 attended out of 50 classes = 80%.
+
+Check your university's actual minimum attendance requirements.`,
+
+        "assignment": `📝 Assignment Management
+
+1. Check your deadlines.
+2. Break large assignments into smaller tasks.
+3. Finish research before writing.
+4. Review your work.
+5. Mark assignments complete in CampusMate.
+
+💡 Start with urgent assignments and those requiring the most preparation.`,
+
+        "cgpa": `🎓 CGPA Preparation
+
+CGPA summarizes academic performance across semesters.
+
+For equally weighted semesters:
+
+CGPA = Sum of SGPAs ÷ Number of Semesters
+
+However, official CGPA calculations may use semester credit weights.
+
+Use the CampusMate CGPA Calculator for a simple estimate.`,
+
+        "interview": `💼 Technical Interview Preparation
+
+Focus on:
+
+1. DSA — arrays, strings, linked lists, trees.
+2. OOP — inheritance, abstraction, polymorphism.
+3. DBMS — SQL, joins, normalization.
+4. OS — processes, scheduling, deadlocks.
+5. CN — TCP/IP, HTTP, routing.
+
+Also prepare to explain your projects, technical decisions and challenges.`,
+
+        "resume": `📄 Resume Tips for CSE Students
+
+• Keep your resume concise and readable.
+• Highlight relevant programming languages.
+• Include two to four meaningful projects.
+• Explain technologies and contributions.
+• Add GitHub and LinkedIn links.
+• Include genuine certifications.
+• Check spelling and formatting.
+
+⭐ Projects with working demonstrations are particularly useful.`,
+
+        "hello": "Hello! 👋 I can help you with CSE revision, quizzes, study plans and viva preparation.",
+
+        "hi": "Hi! 📚 What subject would you like to study today?",
+
+        "thanks": "You're welcome! Good luck with your studies! 🚀"
+    };
+
+    function appendMessage(type, text) {
+
+        const message = document.createElement("div");
+        message.className = "message " + type;
+
+        const icon = document.createElement("div");
+        icon.className = "icon";
+        icon.textContent = type === "user" ? "🧑" : "🤖";
+
+        const bubble = document.createElement("div");
+        bubble.className = "text";
+        bubble.textContent = text;
+        bubble.style.whiteSpace = "pre-wrap";
+        bubble.style.overflowWrap = "anywhere";
+
+        message.appendChild(icon);
+        message.appendChild(bubble);
+
+        chatBox.appendChild(message);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        saveChat();
+    }
+
+    function saveChat() {
+        try {
+            const messages = [];
+
+            chatBox.querySelectorAll(".message").forEach(function (message) {
+                const bubble = message.querySelector(".text");
+
+                if (bubble) {
+                    messages.push({
+                        type: message.classList.contains("user") ? "user" : "ai",
+                        text: bubble.textContent
+                    });
+                }
+            });
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+        } catch (error) {
+            console.warn("Unable to save chat history.");
+        }
+    }
+
+    function loadChat() {
+        try {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+
+            if (!Array.isArray(saved) || saved.length === 0) {
+                return false;
+            }
+
+            chatBox.replaceChildren();
+
+            saved.forEach(function (message) {
+                if (
+                    message &&
+                    ["user", "ai"].includes(message.type) &&
+                    typeof message.text === "string"
+                ) {
+                    appendMessage(message.type, message.text);
+                }
+            });
+
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function aiReply(question) {
+
+        const text = question.toLowerCase().trim();
+
+        const keys = Object.keys(responses).sort(function (a, b) {
+            return b.length - a.length;
+        });
+
+        for (const key of keys) {
+            if (text === key || text.includes(key)) {
+                return responses[key];
+            }
+        }
+
+        return `🤖 CampusMate AI Demo
+
+I don't have a prepared answer for that question yet.
+
+Try one of these:
+• Generate quiz
+• Create study plan
+• Prepare for viva
+• Explain Java OOP
+• Revise DBMS
+
+This version uses predefined educational responses rather than a live AI model.`;
+    }
+
+    function sendMessage() {
+
+        const text = input.value.trim();
+
+        if (!text) return;
+
+        appendMessage("user", text);
+        input.value = "";
+
+        sendBtn.disabled = true;
+
+        setTimeout(function () {
+            appendMessage("ai", aiReply(text));
+            sendBtn.disabled = false;
+        }, 450);
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+
+    document.querySelectorAll(".prompt-btn").forEach(function (button) {
+        button.addEventListener("click", function () {
+            input.value = button.textContent.trim();
+            sendMessage();
+        });
+    });
+
+    function updateStats() {
+        document.getElementById("notesCount").textContent = "Demo";
+        document.getElementById("assignmentCount").textContent = "Demo";
+        document.getElementById("classCount").textContent = "Demo";
+        document.getElementById("attendancePercent").textContent = "Demo";
+    }
+
+    const hasHistory = loadChat();
+
+    if (!hasHistory) {
+        chatBox.replaceChildren();
+
+        appendMessage(
+            "ai",
+            "Hello! 👋 I'm CampusMate AI Demo Assistant.\n\nChoose a Quick Prompt to get started with quizzes, revision or study planning."
+        );
+    }
+
+    updateStats();
+
+    console.log("CampusMate AI Demo Assistant Ready!");
 });
-
-document.querySelectorAll(".prompt-btn").forEach(function(btn){
-
-btn.addEventListener("click",function(){
-
-input.value=this.innerText;
-
-sendMessage();
-
-});
-
-});
-
-function loadGreeting(){
-
-const hour=new Date().getHours();
-
-let greeting="";
-
-if(hour<12){
-
-greeting="Good Morning ☀️";
-
-}
-
-else if(hour<17){
-
-greeting="Good Afternoon 🌤️";
-
-}
-
-else{
-
-greeting="Good Evening 🌙";
-
-}
-
-setTimeout(function(){
-
-appendMessage("ai",greeting+"! Hope you're having a productive day.");
-
-},1000);
-
-}
-
-function randomTip(){
-
-const tips=[
-
-"Revise for 30 minutes every day.",
-
-"Practice coding regularly.",
-
-"Take short breaks while studying.",
-
-"Complete assignments early.",
-
-"Keep your GitHub updated.",
-
-"Read one technical article daily.",
-
-"Practice aptitude questions.",
-
-"Build projects consistently.",
-
-"Learn one new concept every day.",
-
-"Don't ignore fundamentals."
-
-];
-
-return tips[Math.floor(Math.random()*tips.length)];
-
-}
-
-setTimeout(function(){
-
-appendMessage("ai","💡 Study Tip: "+randomTip());
-
-},2500);
-
-function updateStats(){
-
-document.getElementById("notesCount").innerHTML=12;
-
-document.getElementById("assignmentCount").innerHTML=5;
-
-document.getElementById("classCount").innerHTML=4;
-
-document.getElementById("attendancePercent").innerHTML="92%";
-
-}
-
-function saveChat(){
-
-localStorage.setItem(
-
-"campusmate_chat",
-
-chatBox.innerHTML
-
-);
-
-}
-
-function loadChat(){
-
-const data=localStorage.getItem(
-
-"campusmate_chat"
-
-);
-
-if(data){
-
-chatBox.innerHTML=data;
-
-}
-
-}
-
-const observer=new MutationObserver(function(){
-
-saveChat();
-
-});
-
-observer.observe(chatBox,{
-
-childList:true,
-
-subtree:true
-
-});
-
-loadGreeting();
-
-updateStats();
-
-loadChat();
-
-console.log("CampusMate AI Ready 🚀");
-

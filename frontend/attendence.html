@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,189 +8,151 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/attendance.css">
+
+    <style>
+        .attendance-controls {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .attendance-controls button,
+        .subject-form button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .present-btn { background: #16a34a; }
+        .absent-btn { background: #dc2626; }
+        .undo-btn { background: #64748b; }
+        .delete-btn { background: #991b1b; }
+
+        .subject-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .subject-form input {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            min-width: 150px;
+        }
+
+        .subject-form button {
+            background: #2563eb;
+        }
+
+        .attendance-card {
+            min-width: 0;
+        }
+
+        .attendance-card h2 {
+            overflow-wrap: anywhere;
+        }
+
+        .attendance-card p {
+            margin-top: 12px;
+        }
+
+        #attendanceMessage {
+            margin: 12px 0;
+            font-weight: 500;
+        }
+    </style>
 </head>
 
 <body>
 
-<nav class="top-nav">
+    <nav class="top-nav">
+        <a href="dashboard.html">🏠 Dashboard</a>
+        <a href="notes.html">📚 Notes</a>
+        <a href="attendence.html">📈 Attendance</a>
+        <a href="timetable.html">📅 Timetable</a>
+        <a href="assignments.html">📝 Assignments</a>
+    </nav>
 
-    <a href="dashboard.html">🏠 Dashboard</a>
+    <div class="container">
 
-    <a href="notes.html">📚 Notes</a>
+        <h1>📈 Attendance Tracker</h1>
 
-    <a href="attendance.html">📈 Attendance</a>
+        <p class="subtitle">
+            Monitor and manage attendance across all subjects.
+        </p>
 
-    <a href="timetable.html">📅 Timetable</a>
+        <div class="attendance-summary">
 
-    <a href="assignments.html">📝 Assignments</a>
+            <div class="summary-card">
+                <h2 id="overallAttendance">0%</h2>
+                <p>Overall Attendance</p>
+            </div>
 
-</nav>
+            <div class="summary-card">
+                <h2 id="totalSubjects">0</h2>
+                <p>Subjects</p>
+            </div>
 
-<div class="container">
+            <div class="summary-card">
+                <h2 id="safeSubjects">0</h2>
+                <p>Subjects at or above 75%</p>
+            </div>
 
-<h1>📈 Attendance Tracker</h1>
+        </div>
 
-<p class="subtitle">
-Monitor your attendance across all subjects.
-</p>
+        <h2>➕ Add New Subject</h2>
 
-<div class="attendance-summary">
+        <form id="subjectForm" class="subject-form">
 
-<div class="summary-card">
+            <input
+                type="text"
+                id="subjectName"
+                placeholder="Subject name"
+                required
+                maxlength="80">
 
-<h2 id="overallAttendance">87%</h2>
+            <input
+                type="number"
+                id="attendedClasses"
+                placeholder="Classes attended"
+                min="0"
+                step="1"
+                required>
 
-<p>Overall Attendance</p>
+            <input
+                type="number"
+                id="totalClasses"
+                placeholder="Total classes"
+                min="0"
+                step="1"
+                required>
 
-</div>
+            <button type="submit">
+                Add Subject
+            </button>
 
-<div class="summary-card">
+        </form>
 
-<h2 id="totalSubjects">6</h2>
+        <p id="attendanceMessage" role="status"></p>
 
-<p>Subjects</p>
+        <div class="attendance-grid" id="attendanceGrid">
+        </div>
 
-</div>
+    </div>
 
-<div class="summary-card">
-
-<h2 id="safeSubjects">5</h2>
-
-<p>Safe Subjects</p>
-
-</div>
-
-</div>
-
-<div class="attendance-grid">
-
-<div class="attendance-card">
-
-<div class="top-row">
-
-<h2>Java Programming</h2>
-
-<span class="percentage green">92%</span>
-
-</div>
-
-<div class="progress-bar">
-
-<div class="progress-fill" style="width:92%"></div>
-
-</div>
-
-<p>46 / 50 Classes Attended</p>
-
-</div>
-
-<div class="attendance-card">
-
-<div class="top-row">
-
-<h2>Database Management</h2>
-
-<span class="percentage green">88%</span>
-
-</div>
-
-<div class="progress-bar">
-
-<div class="progress-fill" style="width:88%"></div>
-
-</div>
-
-<p>44 / 50 Classes Attended</p>
-
-</div>
-
-<div class="attendance-card">
-
-<div class="top-row">
-
-<h2>Operating System</h2>
-
-<span class="percentage yellow">79%</span>
-
-</div>
-
-<div class="progress-bar">
-
-<div class="progress-fill yellow-fill" style="width:79%"></div>
-
-</div>
-
-<p>39 / 49 Classes Attended</p>
-
-</div>
-
-<div class="attendance-card">
-
-<div class="top-row">
-
-<h2>Artificial Intelligence</h2>
-
-<span class="percentage green">90%</span>
-
-</div>
-
-<div class="progress-bar">
-
-<div class="progress-fill" style="width:90%"></div>
-
-</div>
-
-<p>45 / 50 Classes Attended</p>
-
-</div>
-
-<div class="attendance-card">
-
-<div class="top-row">
-
-<h2>Computer Networks</h2>
-
-<span class="percentage red">73%</span>
-
-</div>
-
-<div class="progress-bar">
-
-<div class="progress-fill red-fill" style="width:73%"></div>
-
-</div>
-
-<p>36 / 49 Classes Attended</p>
-
-</div>
-
-<div class="attendance-card">
-
-<div class="top-row">
-
-<h2>Python</h2>
-
-<span class="percentage green">94%</span>
-
-</div>
-
-<div class="progress-bar">
-
-<div class="progress-fill" style="width:94%"></div>
-
-</div>
-
-<p>47 / 50 Classes Attended</p>
-
-</div>
-
-</div>
-
-</div>
+    <script src="js/attendence.js"></script>
 
 </body>
 </html>
+

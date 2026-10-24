@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dashboard | CampusMate AI</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,261 +13,287 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <link rel="stylesheet" href="css/dashboard.css"></head>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-<script src="js/dashboard.js"></script>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
 
 <body>
 
+    <!-- Page Loader -->
     <div id="pageLoader">
-    <div class="loader"></div>
-</div>
+        <div class="loader"></div>
+    </div>
 
+    <!-- Sidebar -->
     <div class="sidebar">
 
-    <div class="logo">
-        <h2>CampusMate AI</h2>
+        <div class="logo">
+            <h2>CampusMate AI</h2>
+        </div>
+
+        <ul>
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-house"></i> Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="notes.html">
+                    <i class="fas fa-book"></i> Notes
+                </a>
+            </li>
+
+            <li>
+                <a href="attendence.html">
+                    <i class="fas fa-chart-line"></i> Attendance
+                </a>
+            </li>
+
+            <li>
+                <a href="timetable.html">
+                    <i class="fas fa-calendar-days"></i> Timetable
+                </a>
+            </li>
+
+            <li>
+                <a href="assignments.html">
+                    <i class="fas fa-list-check"></i> Assignments
+                </a>
+            </li>
+
+            <li>
+                <a href="cgpa.html">
+                    <i class="fas fa-graduation-cap"></i> CGPA
+                </a>
+            </li>
+
+            <li>
+                <a href="ai.html">
+                    <i class="fas fa-robot"></i> AI Assistant
+                </a>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                    <i class="fas fa-gear"></i> Settings
+                </a>
+            </li>
+        </ul>
+
     </div>
 
-    <ul>
-
-        <li><a href="dashboard.html"><i class="fas fa-house"></i> Dashboard</a></li>
-
-        <li><a href="notes.html"><i class="fas fa-book"></i> Notes</a></li>
-
-        <li><a href="attendance.html"><i class="fas fa-chart-line"></i> Attendance</a></li>
-
-        <li><a href="timetable.html"><i class="fas fa-calendar-days"></i> Timetable</a></li>
-
-        <li><a href="assignments.html"><i class="fas fa-list-check"></i> Assignments</a></li>
-
-        <li><a href="cgpa.html"><i class="fas fa-graduation-cap"></i> CGPA</a></li>
-
-        <li><a href="ai.html"><i class="fas fa-robot"></i> AI Assistant</a></li>
-
-        <li><a href="settings.html"><i class="fas fa-gear"></i> Settings</a></li>
-
-    </ul>
-
-</div>
-
+    <!-- Main Dashboard -->
     <div class="main">
 
+        <!-- Top Bar -->
         <div class="topbar">
 
-    <div class="search-box">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search notes, assignments, subjects...">
-    </div>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
 
-    <div class="top-actions">
-
-        <button class="icon-btn">
-            <i class="fas fa-bell"></i>
-        </button>
-
-        <button class="icon-btn">
-            <i class="fas fa-moon"></i>
-        </button>
-
-        <div class="profile">
-
-            <div class="avatar">
-                JS
+                <input
+                    type="text"
+                    id="dashboardSearch"
+                    placeholder="Search notes, assignments, subjects..."
+                    aria-label="Search dashboard">
             </div>
 
-            <div>
-                <strong>Jaiveer Sharma</strong><br>
-                <small>Computer Science</small>
+            <div class="top-actions">
+
+                <button class="icon-btn" id="notificationBtn"
+                    type="button" aria-label="Notifications">
+                    <i class="fas fa-bell"></i>
+                </button>
+
+                <button class="icon-btn" id="themeBtn"
+                    type="button" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        JS
+                    </div>
+
+                    <div>
+                        <strong>Jaiveer Sharma</strong>
+                        <br>
+                        <small>Computer Science</small>
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
-
-</div>
-
+        <!-- Welcome -->
         <h1>Welcome Back, Jaiveer 👋</h1>
 
         <p class="subtitle">
             Here's your student dashboard for today.
         </p>
 
+        <!-- Dashboard Statistics -->
         <div class="dashboard-cards">
 
-    <div class="card attendance-card">
+            <!-- Attendance -->
+            <div class="card attendance-card">
 
-        <div class="card-icon">
-            <i class="fas fa-chart-line"></i>
-        </div>
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
 
-        <div class="card-info">
+                <div class="card-info">
+                    <h4>Attendance</h4>
 
-            <h4>Attendance</h4>
+                    <h2 id="attendanceValue">87%</h2>
 
-            <h2 id="attendanceValue">87%</h2>
+                    <div class="progress">
+                        <div class="progress-fill"
+                            style="width:87%;">
+                        </div>
+                    </div>
 
-            <div class="progress">
-
-                <div
-                    class="progress-fill"
-                    style="width:87%;">
-
+                    <small>Excellent Attendance</small>
                 </div>
 
             </div>
 
-            <small>Excellent Attendance</small>
+            <!-- Assignments -->
+            <div class="card assignment-card">
+
+                <div class="card-icon">
+                    <i class="fas fa-list-check"></i>
+                </div>
+
+                <div class="card-info">
+                    <h4>Assignments</h4>
+
+                    <h2 id="assignmentValue">4</h2>
+
+                    <small>Pending Tasks</small>
+                </div>
+
+            </div>
+
+            <!-- CGPA -->
+            <div class="card cgpa-card">
+
+                <div class="card-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+
+                <div class="card-info">
+                    <h4>Current CGPA</h4>
+
+                    <h2 id="cgpaValue">7.22</h2>
+
+                    <small>Semester Average</small>
+                </div>
+
+            </div>
+
+            <!-- Notes -->
+            <div class="card notes-card">
+
+                <div class="card-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+
+                <div class="card-info">
+                    <h4>Study Notes</h4>
+
+                    <h2 id="notesValue">25</h2>
+
+                    <small>Files Uploaded</small>
+                </div>
+
+            </div>
+
+            <!-- Classes -->
+            <div class="card classes-card">
+
+                <div class="card-icon">
+                    <i class="fas fa-calendar-days"></i>
+                </div>
+
+                <div class="card-info">
+                    <h4>Today's Classes</h4>
+
+                    <h2 id="classesValue">4</h2>
+
+                    <small>Remaining Today</small>
+                </div>
+
+            </div>
+
+            <!-- Study Streak -->
+            <div class="card streak-card">
+
+                <div class="card-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+
+                <div class="card-info">
+                    <h4>Study Streak</h4>
+
+                    <h2 id="streakValue">18</h2>
+
+                    <small>Days in a Row 🔥</small>
+                </div>
+
+            </div>
 
         </div>
 
-    </div>
-
-    <div class="card assignment-card">
-
-        <div class="card-icon">
-
-            <i class="fas fa-list-check"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h4>Assignments</h4>
-
-            <h2 id="assignmentValue">4</h2>
-
-            <small>Pending Tasks</small>
-
-        </div>
-
-    </div>
-
-    <div class="card cgpa-card">
-
-        <div class="card-icon">
-
-            <i class="fas fa-graduation-cap"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h4>Current CGPA</h4>
-
-            <h2 id="cgpaValue">7.22</h2>
-
-            <small>Semester Average</small>
-
-        </div>
-
-    </div>
-
-    <div class="card notes-card">
-
-        <div class="card-icon">
-
-            <i class="fas fa-book"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h4>Study Notes</h4>
-
-            <h2 id="notesValue">25</h2>
-
-            <small>Files Uploaded</small>
-
-        </div>
-
-    </div>
-
-    <div class="card classes-card">
-
-        <div class="card-icon">
-
-            <i class="fas fa-calendar-days"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h4>Today's Classes</h4>
-
-            <h2 id="classesValue">4</h2>
-
-            <small>Remaining Today</small>
-
-        </div>
-
-    </div>
-
-    <div class="card streak-card">
-
-        <div class="card-icon">
-
-            <i class="fas fa-fire"></i>
-
-        </div>
-
-        <div class="card-info">
-
-            <h4>Study Streak</h4>
-
-            <h2 id="streakValue">18</h2>
-
-            <small>Days in a Row 🔥</small>
-
-        </div>
-
-    </div>
-
-</div>
-        <h2 class="section-title">⚡ Quick Actions</h2>
-
-       </div>
+        <!-- Quick Actions -->
         <h2 class="section-title">⚡ Quick Actions</h2>
 
         <div class="quick-actions">
 
-            <button>Add Note</button>
-            <button>Upload PDF</button>
-            <button>Calculate CGPA</button>
-            <button>Open AI Assistant</button>
+            <button type="button" id="addNoteBtn">
+                Add Note
+            </button>
+
+            <button type="button" id="uploadBtn">
+                Upload PDF
+            </button>
+
+            <button type="button" id="cgpaBtn">
+                Calculate CGPA
+            </button>
+
+            <button type="button" id="aiBtn">
+                Open AI Assistant
+            </button>
 
         </div>
 
+        <!-- Today's Schedule -->
         <h2 class="section-title">📅 Today's Schedule</h2>
 
         <div class="schedule-card">
 
             <p>🕘 9:00 AM — Java Programming</p>
+
             <p>🕚 11:00 AM — Database Systems</p>
+
             <p>🕑 2:00 PM — Artificial Intelligence Lab</p>
 
         </div>
 
     </div>
 
-        <h2 class="section-title">📅 Today's Schedule</h2>
-
-        <div class="schedule-card">
-
-            <p>🕘 9:00 AM — Java Programming</p>
-            <p>🕚 11:00 AM — Database Systems</p>
-            <p>🕑 2:00 PM — Artificial Intelligence Lab</p>
-
-        </div>
-
-    </div>
+    <!-- Load JavaScript after HTML elements -->
+    <script src="js/dashboard.js"></script>
 
 </body>
-
-</html> 
-
+</html>
 
 

@@ -1,154 +1,355 @@
-const stats={
 
-attendance:87,
+document.addEventListener("DOMContentLoaded", function () {
 
-assignments:4,
+    // ==========================================
+    // CAMPUSMATE AI — DASHBOARD
+    // ==========================================
 
-cgpa:7.22,
+    const DEMO_STATS = {
+        assignments: 4,
+        cgpa: 7.22,
+        classes: 4,
+        streak: 18
+    };
 
-notes:25,
+    // ==========================================
+    // 1. DASHBOARD STATISTICS
+    // ==========================================
 
-classes:4,
+    function setStat(id, value) {
+        const element = document.getElementById(id);
 
-streak:18
+        if (element) {
+            element.textContent = value;
+        }
+    }
 
-};
+    function loadAttendance() {
+        try {
+            const saved = localStorage.getItem(
+                "campusmate_attendance_v1"
+            );
 
-function animateValue(id,start,end,duration,suffix=""){
+            if (!saved) {
+                setStat("attendanceValue", "Demo");
+                return;
+            }
 
-const element=document.getElementById(id);
+            const subjects = JSON.parse(saved);
 
-if(!element) return;
+            if (!Array.isArray(subjects)) {
+                setStat("attendanceValue", "Demo");
+                return;
+            }
 
-let startTime=null;
+            let attended = 0;
+            let total = 0;
 
-function animation(currentTime){
+            subjects.forEach(function (subject) {
+                attended += Number(subject.attended) || 0;
+                total += Number(subject.total) || 0;
+            });
 
-if(!startTime) startTime=currentTime;
+            const percentage = total > 0
+                ? Math.round((attended / total) * 100)
+                : 0;
 
-const progress=Math.min((currentTime-startTime)/duration,1);
+            setStat("attendanceValue", percentage + "%");
 
-const value=start+(end-start)*progress;
+            const progress = document.querySelector(
+                ".attendance-card .progress-fill"
+            );
 
-if(Number.isInteger(end)){
+            if (progress) {
+                progress.style.width = percentage + "%";
+            }
 
-element.innerHTML=Math.floor(value)+suffix;
+        } catch (error) {
+            setStat("attendanceValue", "Demo");
+        }
+    }
 
-}
+    function loadNotes() {
+        try {
+            const subjects = [
+                "Java Programming",
+                "Database Management",
+                "Artificial Intelligence",
+                "Computer Networks",
+                "Operating System",
+                "Python"
+            ];
 
-else{
+            let count = 0;
 
-element.innerHTML=value.toFixed(2)+suffix;
+            subjects.forEach(function (subject) {
+                const saved = localStorage.getItem(
+                    "campusmate_notes_" + subject
+                );
 
-}
+                if (saved && saved.trim() !== "") {
+                    count++;
+                }
+            });
 
-if(progress<1){
+            setStat("notesValue", count);
 
-requestAnimationFrame(animation);
+            const label = document.querySelector(
+                ".notes-card small"
+            );
 
-}
+            if (label) {
+                label.textContent = "Subjects With Saved Notes";
+            }
 
-}
+        } catch (error) {
+            setStat("notesValue", "Demo");
+        }
+    }
 
-requestAnimationFrame(animation);
+    function loadOtherStats() {
+        setStat("assignmentValue", DEMO_STATS.assignments);
+        setStat("cgpaValue", DEMO_STATS.cgpa.toFixed(2));
+        setStat("classesValue", DEMO_STATS.classes);
+        setStat("streakValue", DEMO_STATS.streak);
 
-}
+        const labels = [
+            [".assignment-card small", "Demo Pending Tasks"],
+            [".cgpa-card small", "Demo Semester Average"],
+            [".classes-card small", "Demo Classes"],
+            [".streak-card small", "Demo Study Streak"]
+        ];
 
-animateValue("attendanceValue",0,stats.attendance,1200,"%");
+        labels.forEach(function (item) {
+            const label = document.querySelector(item[0]);
 
-animateValue("assignmentValue",0,stats.assignments,1000);
+            if (label) {
+                label.textContent = item[1];
+            }
+        });
+    }
 
-animateValue("cgpaValue",0,stats.cgpa,1400);
+    loadAttendance();
+    loadNotes();
+    loadOtherStats();
 
-animateValue("notesValue",0,stats.notes,1200);
+    // ==========================================
+    // 2. QUICK ACTIONS
+    // ==========================================
 
-animateValue("classesValue",0,stats.classes,1000);
+    function navigate(buttonId, destination) {
+        const button = document.getElementById(buttonId);
 
-animateValue("streakValue",0,stats.streak,1500);
+        if (button) {
+            button.addEventListener("click", function () {
+                window.location.href = destination;
+            });
+        }
+    }
 
-document.querySelectorAll(".card").forEach(card=>{
+    navigate("addNoteBtn", "notes.html");
+    navigate("uploadBtn", "notes.html");
+    navigate("cgpaBtn", "cgpa.html");
+    navigate("aiBtn", "ai.html");
 
-card.addEventListener("mouseenter",()=>{
+    // ==========================================
+    // 3. DASHBOARD SEARCH
+    // ==========================================
 
-card.style.boxShadow="0 18px 40px rgba(37,99,235,.18)";
+    const search = document.getElementById("dashboardSearch");
 
+    const searchRoutes = [
+        {
+            keywords: ["note", "pdf", "document"],
+            page: "notes.html"
+        },
+        {
+            keywords: ["attendance", "present", "absent"],
+            page: "attendence.html"
+        },
+        {
+            keywords: ["assignment", "deadline", "task"],
+            page: "assignments.html"
+        },
+        {
+            keywords: ["cgpa", "sgpa", "grade", "semester"],
+            page: "cgpa.html"
+        },
+        {
+            keywords: ["timetable", "schedule", "class"],
+            page: "timetable.html"
+        },
+        {
+            keywords: ["ai", "quiz", "viva", "study plan"],
+            page: "ai.html"
+        },
+        {
+            keywords: ["setting", "theme", "dark mode"],
+            page: "settings.html"
+        }
+    ];
+
+    if (search) {
+        search.addEventListener("keydown", function (event) {
+            if (event.key !== "Enter") return;
+
+            const query = search.value.trim().toLowerCase();
+
+            if (!query) return;
+
+            const match = searchRoutes.find(function (route) {
+                return route.keywords.some(function (keyword) {
+                    return query.includes(keyword);
+                });
+            });
+
+            if (match) {
+                window.location.href = match.page;
+            } else {
+                alert(
+                    "No matching section found.\n\n" +
+                    "Try searching Notes, Attendance, " +
+                    "Assignments, CGPA, Timetable or AI."
+                );
+            }
+        });
+    }
+
+    // ==========================================
+    // 4. NOTIFICATIONS
+    // ==========================================
+
+    const notificationBtn = document.getElementById(
+        "notificationBtn"
+    );
+
+    if (notificationBtn) {
+        notificationBtn.addEventListener("click", function () {
+            alert(
+                "🔔 CampusMate Notifications\n\n" +
+                "📚 Review your saved notes.\n" +
+                "📝 Check your assignment deadlines.\n" +
+                "📈 Keep your attendance updated.\n\n" +
+                "Live reminders are not connected yet."
+            );
+        });
+    }
+
+    // ==========================================
+    // 5. DARK MODE
+    // ==========================================
+
+    const themeBtn = document.getElementById("themeBtn");
+
+    // Inject dashboard-specific theme styles.
+    const darkStyles = document.createElement("style");
+
+    darkStyles.textContent = `
+        body.dark-mode {
+            background: #0f172a !important;
+            color: #f8fafc !important;
+        }
+
+        body.dark-mode .main {
+            background: #0f172a !important;
+            color: #f8fafc !important;
+        }
+
+        body.dark-mode .topbar,
+        body.dark-mode .card,
+        body.dark-mode .schedule-card {
+            background: #1e293b !important;
+            color: #f8fafc !important;
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h4,
+        body.dark-mode p,
+        body.dark-mode strong {
+            color: #f8fafc !important;
+        }
+
+        body.dark-mode small,
+        body.dark-mode .subtitle {
+            color: #cbd5e1 !important;
+        }
+
+        body.dark-mode .search-box {
+            background: #334155 !important;
+        }
+
+        body.dark-mode .search-box input {
+            background: transparent !important;
+            color: #f8fafc !important;
+        }
+
+        body.dark-mode .icon-btn {
+            background: #334155 !important;
+            color: #f8fafc !important;
+        }
+    `;
+
+    document.head.appendChild(darkStyles);
+
+    function applyTheme() {
+        const darkEnabled =
+            localStorage.getItem("darkMode") === "true";
+
+        document.body.classList.toggle(
+            "dark-mode",
+            darkEnabled
+        );
+
+        if (themeBtn) {
+            themeBtn.innerHTML = darkEnabled
+                ? '<i class="fas fa-sun"></i>'
+                : '<i class="fas fa-moon"></i>';
+        }
+    }
+
+    if (themeBtn) {
+        themeBtn.addEventListener("click", function () {
+            const currentlyDark =
+                document.body.classList.contains("dark-mode");
+
+            localStorage.setItem(
+                "darkMode",
+                String(!currentlyDark)
+            );
+
+            applyTheme();
+        });
+    }
+
+    applyTheme();
+
+    // ==========================================
+    // 6. CARD HOVER ANIMATIONS
+    // ==========================================
+
+    document.querySelectorAll(".card").forEach(function (card) {
+        card.addEventListener("mouseenter", function () {
+            card.style.boxShadow =
+                "0 18px 40px rgba(37,99,235,.18)";
+        });
+
+        card.addEventListener("mouseleave", function () {
+            card.style.boxShadow =
+                "0 10px 25px rgba(0,0,0,.08)";
+        });
+    });
+
+    // ==========================================
+    // 7. HIDE PAGE LOADER
+    // ==========================================
+
+    const loader = document.getElementById("pageLoader");
+
+    if (loader) {
+        loader.style.display = "none";
+    }
+
+    console.log("CampusMate Dashboard Ready!");
 });
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.boxShadow="0 10px 25px rgba(0,0,0,.08)";
-
-});
-
-});
-
-console.log("Dashboard Analytics Loaded 🚀");
-
-const addNoteBtn=document.getElementById("addNoteBtn");
-const uploadBtn=document.getElementById("uploadBtn");
-const cgpaBtn=document.getElementById("cgpaBtn");
-const aiBtn=document.getElementById("aiBtn");
-
-if(addNoteBtn){
-
-addNoteBtn.addEventListener("click",function(){
-
-window.location.href="notes.html";
-
-});
-
-}
-
-if(uploadBtn){
-
-uploadBtn.addEventListener("click",function(){
-
-alert("📄 PDF Upload feature coming soon!");
-
-});
-
-}
-
-if(cgpaBtn){
-
-cgpaBtn.addEventListener("click",function(){
-
-window.location.href="cgpa.html";
-
-});
-
-}
-
-if(aiBtn){
-
-aiBtn.addEventListener("click",function(){
-
-window.location.href="ai.html";
-
-});
-
-}
-
-const cards=document.querySelectorAll(".card");
-
-cards.forEach(function(card,index){
-
-card.style.opacity="0";
-
-card.style.transform="translateY(25px)";
-
-setTimeout(function(){
-
-card.style.transition=".5s";
-
-card.style.opacity="1";
-
-card.style.transform="translateY(0)";
-
-},index*150);
-
-});
-
-console.log("Dashboard Loaded 🚀");
-
 
